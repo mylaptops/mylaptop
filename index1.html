@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Company</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+    }
+    header h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #f0a500;
+    }
+    /* Hero Section */
+    .hero {
+      background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+    }
+    /* Section Styling */
+    section {
+      padding: 40px 0;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .content {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    /* Services Section */
+    .services .service {
+      margin-bottom: 20px;
+    }
+    .services .service h3 {
+      color: #f0a500;
+    }
+    /* Portfolio Section */
+    #portfolio p {
+      margin-bottom: 20px;
+    }
+    /* Team Section */
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .team-member {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      width: calc(33.333% - 40px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .team-member img {
+      width: 100%;
+      border-radius: 50%;
+      max-width: 150px;
+      margin: 0 auto;
+      display: block;
+    }
+    .team-member h3 {
+      margin-top: 10px;
+    }
+    /* Testimonials Section */
+    .testimonials {
+      background: #f0f0f0;
+      padding: 40px 0;
+    }
+    .testimonial {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial p {
+      margin-bottom: 5px;
+    }
+    .testimonial span {
+      font-weight: bold;
+      color: #333;
+    }
+    /* Blog Section */
+    .blog-posts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .blog-post {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: calc(33.333% - 40px);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+    .blog-post h3 {
+      color: #f0a500;
+      margin-bottom: 10px;
+    }
+    /* Pricing Section */
+    .pricing {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .pricing-plan {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: calc(33.333% - 40px);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .pricing-plan:hover {
+      transform: translateY(-5px);
+    }
+    .pricing-plan h3 {
+      color: #f0a500;
+      margin-bottom: 10px;
+    }
+    .pricing-plan ul {
+      list-style: none;
+      margin: 20px 0;
+      padding: 0;
+    }
+    .pricing-plan li {
+      margin-bottom: 10px;
+    }
+    .pricing-plan button {
+      padding: 10px 20px;
+      background: #f0a500;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .pricing-plan button:hover {
+      background: #d18e00;
+    }
+    /* FAQ Section */
+    .faq-item {
+      margin-bottom: 20px;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .faq-question {
+      background: #f0a500;
+      color: #fff;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .faq-answer {
+      padding: 10px 15px;
+      border: 1px solid #f0a500;
+      border-top: none;
+      display: none;
+    }
+    /* Contact Form */
+    form {
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #f0a500;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #d18e00;
+    }
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: relative;
+    }
+    footer form {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    footer input[type="email"] {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      width: 250px;
+    }
+    footer button {
+      padding: 10px 20px;
+      background: #f0a500;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    footer button:hover {
+      background: #d18e00;
+    }
+    /* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #f0a500;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 18px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+    #backToTop:hover {
+      background: #d18e00;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+        padding: 10px;
+      }
+      nav {
+        flex-direction: column;
+      }
+      .team-member, .blog-post, .pricing-plan {
+        width: calc(50% - 20px);
+      }
+    }
+    @media (max-width: 480px) {
+      .team-member, .blog-post, .pricing-plan {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Software Company</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#team">Team</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#blog">Blog</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Innovative Software Solutions</h1>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="content">
+      <h2>About Us</h2>
+      <p>
+        We are a dedicated software company committed to delivering innovative and efficient solutions. Our expert team works closely with you to turn your ideas into reality, ensuring your business thrives in the digital age.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="content">
+      <h2>Our Services</h2>
+      <div class="service">
+        <h3>Custom Software Development</h3>
+        <p>
+          We create tailored software solutions designed to meet your unique business requirements.
+        </p>
+      </div>
+      <div class="service">
+        <h3>Mobile App Development</h3>
+        <p>
+          Developing intuitive and user-friendly mobile applications across all platforms.
+        </p>
+      </div>
+      <div class="service">
+        <h3>Cloud Solutions</h3>
+        <p>
+          Modern cloud computing services to optimize your business operations and scalability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <div class="content">
+      <h2>Portfolio</h2>
+      <p>
+        Take a look at some of our recent projects that highlight our expertise and commitment to quality.
+      </p>
+      <!-- Portfolio items can be added here -->
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <div class="content">
+      <h2>Our Team</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Team Member" />
+          <h3>John Doe</h3>
+          <p>Lead Developer</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Team Member" />
+          <h3>Jane Smith</h3>
+          <p>Project Manager</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/150" alt="Team Member" />
+          <h3>Mike Johnson</h3>
+          <p>UI/UX Designer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="content">
+      <h2>Testimonials</h2>
+      <div class="testimonial">
+        <p>
+          "This company transformed our business with their innovative software solutions. Their team is responsive, professional, and highly skilled."
+        </p>
+        <span>- Client A</span>
+      </div>
+      <div class="testimonial">
+        <p>
+          "We are extremely satisfied with the mobile app developed by this team. The process was smooth and the result exceeded our expectations."
+        </p>
+        <span>- Client B</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <div class="content">
+      <h2>Latest Blog Posts</h2>
+      <div class="blog-posts">
+        <div class="blog-post">
+          <h3>Embracing Cloud Technology</h3>
+          <p>
+            Discover how cloud solutions are revolutionizing the way businesses operate and scale.
+          </p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-post">
+          <h3>Mobile App Trends in 2025</h3>
+          <p>
+            Stay updated with the latest trends in mobile app development and design.
+          </p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="blog-post">
+          <h3>Custom Software Development Best Practices</h3>
+          <p>
+            Learn the essential best practices for successful custom software development.
+          </p>
+          <a href="#">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <div class="content">
+      <h2>Our Pricing</h2>
+      <div class="pricing">
+        <div class="pricing-plan">
+          <h3>Basic</h3>
+          <p>$19/month</p>
+          <ul>
+            <li>Essential Features</li>
+            <li>Email Support</li>
+            <li>Single User</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="pricing-plan">
+          <h3>Professional</h3>
+          <p>$49/month</p>
+          <ul>
+            <li>All Basic Features</li>
+            <li>Priority Email Support</li>
+            <li>Up to 5 Users</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+        <div class="pricing-plan">
+          <h3>Enterprise</h3>
+          <p>$99/month</p>
+          <ul>
+            <li>All Professional Features</li>
+            <li>24/7 Support</li>
+            <li>Unlimited Users</li>
+          </ul>
+          <button>Get Started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="content">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">What services do you offer?</div>
+        <div class="faq-answer">We offer custom software development, mobile app development, and cloud solutions tailored to your business needs.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How can I get a quote?</div>
+        <div class="faq-answer">You can get a quote by contacting us through our contact form. We’ll discuss your requirements and provide a detailed proposal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer support after project completion?</div>
+        <div class="faq-answer">Yes, we offer ongoing support and maintenance packages to ensure your software remains up-to-date and secure.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="content">
+      <h2>Contact Us</h2>
+      <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Software Company. All rights reserved.</p>
+      <p>Subscribe to our Newsletter:</p>
+      <form action="#" method="post">
+        <input type="email" name="newsletter" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </footer>
+
+  <!-- Back-to-Top Button -->
+  <button id="backToTop" title="Back to Top">&#8679;</button>
+
+  <!-- JavaScript for FAQ Toggle and Back-to-Top -->
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach((question) => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Back-to-Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
